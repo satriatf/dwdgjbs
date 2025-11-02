@@ -1,4 +1,4 @@
-import { query } from "../../../../lib/db";
+import { query } from "@/lib/db";
 
 export async function POST(req) {
   if (!process.env.DATABASE_URL) {
