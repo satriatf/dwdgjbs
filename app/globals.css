@@ -1,33 +1,102 @@
+/*
+  Global design tokens & utilities
+  Breakpoints used throughout the project:
+  SM <768px | MD ≥768px | LG ≥992px
+*/
+
 :root {
+  /* Colors */
+  --bg: #ffffff; /* page background: white per design */
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --text: #0f1724;
+  --accent: #1f8f4a; /* green accent */
+  --border: #e6e9e7;
+
+  /* Radii & spacing */
+  --radius: 8px;
+  --container-max: 1200px;
+
+  /* Focus */
+  --focus: 3px solid rgba(31, 143, 74, 0.18);
+
+  /* Aliases for components that reference different variable names */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ffffff;
+  --text-primary: #0f1724;
+  --text-secondary: #6b7280;
 }
 
+/* Keep a consistent light theme regardless of OS dark mode (per design) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #ffffff;
+    --card-bg: #ffffff;
+    --muted: #6b7280;
+    --text: #0f1724;
+    --accent: #1f8f4a;
+    --border: #e6e9e7;
+
+    --background: #ffffff;
+    --foreground: #ffffff;
+    --text-primary: #0f1724;
+    --text-secondary: #6b7280;
   }
 }
 
+/* Reset + base */
+* {
+  box-sizing: border-box;
+}
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
 }
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: var(--text);
+  background: var(--bg) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   margin: 0;
+}
+
+p {
+  line-height: 1.7;
+  margin: 0;
+}
+
+a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Defensive overrides so components using different variable names render light */
+html,
+body,
+#__next {
+  background: var(--background) !important;
+  color: var(--text) !important;
 }
 
 a {
@@ -35,8 +104,79 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.section {
+  padding: 64px 0;
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+/* Grid helpers */
+.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Responsive breakpoints
+   SM <768px | MD ≥768px | LG ≥992px
+*/
+@media (max-width: 767px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
   }
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Accessible focus outlines for interactive elements */
+button:focus,
+a:focus {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: 6px;
 }

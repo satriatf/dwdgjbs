@@ -1,0 +1,169 @@
+/* SM <768px | MD ≥768px | LG ≥992px */
+.wrapper {
+  padding: 64px 0;
+}
+
+.description {
+  font-size: 16px;
+  color: var(--text);
+  text-align: center;
+  margin: 0 0 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.card {
+  padding: 32px 28px;
+  border-radius: 12px;
+  color: white;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+  opacity: 0.95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.desc {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  flex: 1;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+
+.cta:hover {
+  background: white;
+  transform: translateX(4px);
+}
+
+.arrow {
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.cta:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* gradients for specific blocks */
+.card.instagram {
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+}
+
+.card.linkedin {
+  background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
+}
+
+.card.website {
+  background: linear-gradient(135deg, #20b2aa 0%, #40e0d0 100%);
+}
+
+.card.global {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+}
+
+@media (min-width: 768px) {
+  .description {
+    font-size: 18px;
+  }
+  /* Layout: three equal columns on wider screens */
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
+  }
+  .card {
+    min-height: 260px;
+  }
+}
+
+/* make the whole card anchor look like a block */
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* enhance the card look */
+.card {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 -8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.card:hover .iconWrapper {
+  transform: scale(1.05);
+}
+
+/* whole card anchor styling */
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardLink:focus {
+  outline: 3px solid rgba(10, 138, 71, 0.18);
+  outline-offset: 6px;
+}

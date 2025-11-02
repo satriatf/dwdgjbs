@@ -1,0 +1,351 @@
+/* SM <768px | MD ≥768px | LG ≥992px */
+.footer {
+  padding: 60px 0 32px;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, #f9faf9 0%, #ffffff 100%);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  max-width: 500px;
+}
+
+.logoLink {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logoLink:hover {
+  transform: scale(1.05);
+}
+
+.logoText {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.logoMain {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.logoImageWrap {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.logoImg {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  object-fit: contain;
+  object-position: center center;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+@media (max-width: 767px) {
+  .logoImg {
+    max-width: 200px;
+    width: auto;
+  }
+}
+
+.logoSub {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+.mission {
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 14px;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.socialTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.socialLink {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--border);
+  color: var(--text);
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.socialLink::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  transform: translate(-50%, -50%);
+}
+
+.socialLink:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.socialLink:hover {
+  border-color: transparent;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.copy {
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.bigCopy {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+}
+
+.socialTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.socialLink {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--border);
+  color: var(--text);
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.socialLink::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  transform: translate(-50%, -50%);
+}
+
+.socialLink:first-child::before {
+  background: #0077b5;
+}
+
+.socialLink:last-child::before {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+.socialLink:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.socialLink:hover {
+  border-color: transparent;
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.socialLink:first-child:hover {
+  background: #0077b5;
+  color: white;
+}
+
+.socialLink:last-child:hover {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  color: white;
+}
+
+.socialLink svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.socialLink:hover svg {
+  transform: scale(1.2);
+}
+
+.copy {
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.bigCopy {
+  /* make the copyright line small and subtle */
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+}
+
+.legalLinks {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.legalLinks a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.legalLinks a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.legalLinks a:hover {
+  color: var(--accent);
+}
+
+.legalLinks a:hover::after {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .brand {
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  .social {
+    align-items: flex-start;
+  }
+
+  .copy {
+    flex-direction: row;
+    /* center the copyright and ensure it stays in the middle */
+    justify-content: center;
+  }
+
+  .bigCopy {
+    /* keep copyright small on larger screens as well */
+    font-size: 11px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .mission {
+    color: var(--text);
+  }
+}

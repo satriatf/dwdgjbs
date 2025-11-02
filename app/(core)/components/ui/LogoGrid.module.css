@@ -1,0 +1,41 @@
+/* SM <768px | MD ≥768px | LG ≥992px */
+.grid {
+  display: grid;
+  /* center items and allow two large logos to sit in the middle */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  filter: grayscale(1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.item:hover {
+  filter: grayscale(0);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(31, 143, 74, 0.1);
+  border-color: var(--accent);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
+  }
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
+  }
+}

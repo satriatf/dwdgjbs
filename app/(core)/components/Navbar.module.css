@@ -1,0 +1,435 @@
+/* SM <768px | MD ≥768px | LG ≥992px */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* remove header border/shadow while mobile panel is open to avoid thin white line */
+.headerOpen {
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+/* anchor for absolute-positioned mobile dropdown */
+.inner {
+  position: relative;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  /* ensure brand area keeps a consistent height to avoid jumping */
+  min-height: 44px;
+  line-height: 0;
+}
+
+/* make navbar logo larger for better visibility */
+.brand img {
+  max-width: 300px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* explicit class used by Navbar/Footer Image components (CSS modules scope) */
+.logoImg {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  object-fit: contain;
+  object-position: left center;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.logoText {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.logoMain {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.logoSub {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.3;
+  gap: 2px;
+}
+
+.nav {
+  display: none;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  color: var(--text);
+  font-weight: 400;
+  padding: 8px 6px;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.link:focus,
+.link:hover {
+  color: var(--accent);
+  outline: none;
+}
+.link.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.right {
+  display: none;
+  align-items: center;
+  gap: 16px;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--text);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.socialIcon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  transform: translate(-50%, -50%);
+}
+
+.socialIcon:first-child::before {
+  background: #0077b5;
+}
+
+.socialIcon:last-child::before {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+.socialIcon:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.socialIcon:first-child:hover {
+  background: #0077b5;
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+}
+
+.socialIcon:last-child:hover {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3);
+}
+
+.socialIcon svg {
+  position: relative;
+  z-index: 1;
+  font-size: 18px;
+}
+
+.toggle {
+  background: transparent;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--text);
+}
+
+.mobilePanel {
+  /* by default keep hidden but available for small-screen dropdown */
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 12px;
+  left: 12px;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.mobileClose {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  padding: 12px;
+  cursor: pointer;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* NOTE: removed blanket rule that hid all aria-hidden spans inside .mobilePanel
+   — it was unintentionally hiding the close (×) button. If you need to hide
+   a specific duplicated span, scope the selector narrowly. */
+
+.mobileMenu {
+  list-style: none;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileLink {
+  padding: 10px 12px;
+  display: block;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.mobileLink {
+  /* ensure menu items are right-aligned on small screens when panel opens */
+  text-align: right;
+}
+
+.mobileLink:hover {
+  background: rgba(31, 143, 74, 0.06);
+}
+
+.mobileSocial {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+}
+
+/* Hide social icons inside mobile panel on small screens per request */
+@media (max-width: 767px) {
+  .mobileSocial {
+    display: none;
+  }
+}
+
+/* Desktop nav visible at MD+ */
+@media (min-width: 768px) {
+  .nav {
+    display: block;
+  }
+  .right {
+    display: flex;
+  }
+  .toggle {
+    display: none;
+  }
+  .mobilePanel {
+    display: none;
+  }
+  /* slightly reduce logo at medium screens if needed */
+  .brand img {
+    max-width: 250px;
+    width: auto;
+    height: auto;
+  }
+  .logoImg {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 767px) {
+  .brand img {
+    max-width: 200px;
+    width: auto;
+    height: auto;
+  }
+  .logoImg {
+    max-width: 200px;
+  }
+}
+
+/* Mobile panel open state */
+/* CLOSED/DEFAULT state for mobile dropdown: collapsed
+   remove padding/box-shadow/border-radius in collapsed state so there's no
+   visible floating white bar when the menu is closed */
+.mobileMenu {
+  background: var(--card-bg);
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.995);
+  /* include padding in transition so opening/closing is smooth */
+  transition: max-height 260ms ease, opacity 220ms ease, transform 220ms ease,
+    padding 200ms ease;
+  padding: 0;
+}
+
+/* OPEN state (applies when .open is added to .mobilePanel) */
+.open .mobileMenu {
+  max-height: 420px; /* allow enough space for menu items */
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Consolidated mobile open/close behavior handled later to avoid conflicts. */
+
+@media (prefers-color-scheme: dark) {
+  .mobileMenu {
+    background: var(--card-bg);
+  }
+}
+
+/* Mobile-specific behaviour: dropdown under header - right aligned and full-width */
+@media (max-width: 767px) {
+  .inner {
+    position: relative;
+  }
+
+  /* make the panel span the full viewport under the header (overlay) */
+  .mobilePanel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-top: calc(var(--header-height, 56px));
+    z-index: 55; /* below header (60) so header stays visible */
+    pointer-events: none;
+    background: transparent;
+    transition: background 220ms ease;
+  }
+
+  .mobilePanel.open {
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.18);
+  }
+
+  /* position close button to align with hamburger on narrow screens */
+  .mobileClose {
+    right: 12px;
+  }
+
+  .open {
+    background: transparent;
+    padding: 0;
+  }
+
+  /* mobile menu becomes full-width, flush to edges; no floating card */
+  .open .mobileMenu {
+    width: 100%;
+    margin: 0;
+    /* push menu items down so the first item (Home) lines up visually with the navbar/hamburger */
+    padding: calc(var(--header-height, 56px) + 8px) 16px 20px 16px;
+    text-align: right;
+    align-items: flex-end;
+    pointer-events: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* ensure mobilePanel receives clicks only when open */
+  .mobilePanel:not(.open) {
+    pointer-events: none;
+  }
+
+  .mobilePanel.open {
+    pointer-events: auto;
+  }
+
+  /* Individual links are full width and right-aligned */
+  .mobileLink {
+    width: 100%;
+    text-align: right;
+    padding: 12px 8px;
+  }
+
+  /* hide mobile social icons inside panel on small screens */
+  .mobileSocial {
+    display: none;
+  }
+
+  /* make sure the reveal animation remains subtle */
+  .mobileMenu {
+    /* start slightly above and invisible; we'll animate transform+opacity */
+    transform: translateY(-6px);
+    opacity: 0;
+    transition: opacity 220ms ease, transform 220ms ease, padding 180ms ease;
+  }
+
+  .mobilePanel.open .mobileMenu {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
