@@ -1,5 +1,5 @@
 import { EXPERTISE } from "../../../lib/constants";
-import Image from "next/image";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 import Link from "next/link";
 import styles from "./ExpertiseGrid.module.css";
 
@@ -14,13 +14,7 @@ export default function ExpertiseGrid() {
             className={styles.card}
           >
             <div className={styles.imageWrapper}>
-              <Image
-                src={e.img}
-                alt={e.title}
-                width={600}
-                height={300}
-                className={styles.image}
-              />
+              <SmartImage src={e.img} alt={e.title} width={600} height={300} className={styles.image} />
               <div className={styles.overlay}></div>
               <div className={styles.number}>0{idx + 1}</div>
             </div>

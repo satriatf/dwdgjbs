@@ -16,16 +16,39 @@
   border: 1px solid var(--border);
   border-radius: 12px;
   background: white;
-  filter: grayscale(1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* start in grayscale and reveal color on hover/focus for a pleasant effect */
+  transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.24s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.24s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
 .item:hover {
-  filter: grayscale(0);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(31, 143, 74, 0.1);
+  box-shadow: 0 8px 24px rgba(31, 143, 74, 0.08);
   border-color: var(--accent);
+}
+
+/* Constrain the rendered image so all logos appear visually consistent */
+.logo {
+  display: block;
+  max-width: 100%;
+  /* height caps - increase slightly on larger screens */
+  max-height: 120px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  /* start desaturated */
+  filter: grayscale(1) contrast(0.95) opacity(0.95);
+  transition: filter 220ms ease, transform 220ms ease, opacity 220ms ease;
+}
+
+/* reveal full color when hovering or focusing the item */
+.item:hover .logo,
+.item:focus-within .logo,
+.item:focus .logo {
+  filter: none;
+  opacity: 1;
 }
 
 @media (min-width: 768px) {
@@ -37,5 +60,8 @@
 @media (min-width: 992px) {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
+  }
+  .logo {
+    max-height: 140px;
   }
 }

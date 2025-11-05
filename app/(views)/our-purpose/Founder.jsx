@@ -1,16 +1,17 @@
-import Image from "next/image";
 import styles from "./Founder.module.css";
-
+import { FOUNDER_IMAGE } from "../../../lib/constants";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 export default function Founder() {
   return (
     <div className={styles.wrap}>
       <div className={styles.photo}>
-        <Image
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop"
-          alt="Sébastien Frendo, Founder"
+        <SmartImage
+          src={FOUNDER_IMAGE}
+          alt="Panji Gumilang, President of Do Well Do Good Jakarta Business School"
           width={500}
           height={650}
           className={styles.image}
+          priority
         />
       </div>
       <div className={styles.copy}>
@@ -35,8 +36,8 @@ export default function Founder() {
           </p>
         </blockquote>
         <div className={styles.attribution}>
-          <strong>Sébastien Frendo</strong>
-          <span>Founder of Do Well Do Good</span>
+          <strong>Panji Gumilang</strong>
+          <span>President of Do Well Do Good Jakarta Business School</span>
         </div>
       </div>
     </div>

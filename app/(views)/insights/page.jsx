@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { INSIGHTS_SEED } from "../../../lib/constants";
 import Chip from "../../(core)/components/ui/Chip";
-import Image from "next/image";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 import Hero from "./Hero";
 import styles from "./insights.module.css";
 
@@ -50,13 +50,7 @@ export default function InsightsPage() {
             {items.map((it) => (
               <article key={it.id} className={styles.card}>
                 <div className={styles.imageWrapper}>
-                  <Image
-                    src={it.image}
-                    alt={it.title}
-                    width={480}
-                    height={260}
-                    className={styles.image}
-                  />
+                  <SmartImage src={it.image} alt={it.title} width={480} height={260} className={styles.image} />
                 </div>
                 <h3 className={styles.title}>{it.title}</h3>
                 <p className={styles.excerpt}>{it.excerpt}</p>

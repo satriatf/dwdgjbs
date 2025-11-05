@@ -1,7 +1,7 @@
 import { EXPERTISE } from "../../../lib/constants";
 import styles from "./Expertise.module.css";
 import SectionTitle from "../../(core)/components/ui/SectionTitle";
-import Image from "next/image";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 import Link from "next/link";
 
 export default function Expertise() {
@@ -17,13 +17,7 @@ export default function Expertise() {
           >
             <div className={styles.preview}>
               <div className={styles.imagePlaceholder}>
-                <Image
-                  src={e.img}
-                  alt={e.title}
-                  width={300}
-                  height={220}
-                  className={styles.previewImage}
-                />
+                <SmartImage src={e.img} alt={e.title} width={300} height={220} className={styles.previewImage} />
               </div>
               <div className={styles.copy}>
                 <h4 className={styles.title}>{e.title}</h4>

@@ -1,5 +1,6 @@
-import Image from "next/image";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 import styles from "./Hero.module.css";
+import { HERO_IMAGE } from "@/lib/constants";
 
 export default function Hero() {
   return (
@@ -19,13 +20,7 @@ export default function Hero() {
           </div>
           <div className={styles.visual}>
             <div className={styles.decorative}>
-              <Image
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop"
-                alt="Students learning"
-                width={640}
-                height={480}
-                className={styles.image}
-              />
+              <SmartImage src={HERO_IMAGE} alt="Students learning" width={640} height={480} className={styles.image} priority />
               <div className={styles.overlay}></div>
             </div>
           </div>

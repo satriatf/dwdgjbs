@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { SOCIAL_LINKS, LOGO_PATH, LOGO_ALT } from "@/lib/constants";
 import styles from "./Footer.module.css";
@@ -17,14 +17,7 @@ export default function Footer() {
             >
               {/* prefer using the project logo image if available for stronger branding */}
               <div className={styles.logoImageWrap}>
-                <Image
-                  src={LOGO_PATH}
-                  alt={LOGO_ALT}
-                  width={400}
-                  height={120}
-                  className={styles.logoImg}
-                  unoptimized
-                />
+                <SmartImage src={LOGO_PATH} alt={LOGO_ALT} width={400} height={120} className={styles.logoImg} priority />
               </div>
             </Link>
             <p className={styles.mission}>

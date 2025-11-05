@@ -1,5 +1,6 @@
-import Image from "next/image";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 import styles from "./Intro.module.css";
+import { STRATEGY_INTRO_IMAGE } from "@/lib/constants";
 
 export default function Intro() {
   return (
@@ -19,8 +20,8 @@ export default function Intro() {
           </p>
         </div>
         <div className={styles.visual}>
-          <Image
-            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop"
+          <SmartImage
+            src={STRATEGY_INTRO_IMAGE}
             alt="Strategy Consulting Team"
             width={520}
             height={320}

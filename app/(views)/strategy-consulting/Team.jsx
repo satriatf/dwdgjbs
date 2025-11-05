@@ -1,5 +1,5 @@
 import { TEAM } from "../../../lib/constants";
-import Image from "next/image";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 import SectionTitle from "../../(core)/components/ui/SectionTitle";
 import { FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
@@ -17,13 +17,7 @@ export default function Team() {
         {TEAM.map((t, idx) => (
           <div key={idx} className={styles.card}>
             <div className={styles.photo}>
-              <Image
-                src={t.photo}
-                alt={t.name}
-                width={200}
-                height={200}
-                className={styles.image}
-              />
+              <SmartImage src={t.photo} alt={t.name} width={200} height={200} className={styles.image} />
             </div>
             <div className={styles.copy}>
               <h4 className={styles.name}>{t.name}</h4>

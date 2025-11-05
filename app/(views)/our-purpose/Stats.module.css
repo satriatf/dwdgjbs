@@ -35,6 +35,16 @@
   transition: transform 0.3s ease;
 }
 
+/* style for SVG/IMG icons placed inside .icon */
+.icon img {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 0 auto 16px auto;
+  transition: transform 0.3s ease;
+  color: var(--accent);
+}
+
 .stat:hover .icon {
   transform: scale(1.2);
 }

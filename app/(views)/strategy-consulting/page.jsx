@@ -5,7 +5,7 @@ import SectionTitle from "../../(core)/components/ui/SectionTitle";
 // use the shared ExpertiseGrid to display the original 'Our Expertise' card layout
 import ExpertiseGrid from "../expertise/ExpertiseGrid";
 import Team from "./Team";
-import Clients from "./Clients";
+import Support from "./Support";
 /* InsightsFeed removed as requested */
 
 export default function StrategyPage() {
@@ -30,7 +30,7 @@ export default function StrategyPage() {
       </section>
       <section className="section">
         <div className="container">
-          <Clients />
+          <Support />
         </div>
       </section>
       {/* Insights section removed as requested */}

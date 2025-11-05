@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 import styles from "./LogoGrid.module.css";
 
 export default function LogoGrid({ logos = [] }) {
@@ -6,13 +6,7 @@ export default function LogoGrid({ logos = [] }) {
     <div className={styles.grid}>
       {logos.map((src, idx) => (
         <div key={idx} className={styles.item}>
-          <Image
-            src={src}
-            alt={`Client ${idx + 1}`}
-            width={280}
-            height={140}
-            style={{ objectFit: "contain" }}
-          />
+          <SmartImage src={src} alt={`Client ${idx + 1}`} width={280} height={140} className={styles.logo} />
         </div>
       ))}
     </div>

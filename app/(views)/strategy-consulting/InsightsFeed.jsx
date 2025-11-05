@@ -1,6 +1,6 @@
 import { INSIGHTS_SEED } from "../../../lib/constants";
 import styles from "./InsightsFeed.module.css";
-import Image from "next/image";
+import SmartImage from "@/app/(core)/components/ui/SmartImage";
 
 export default function InsightsFeed() {
   const items = INSIGHTS_SEED.slice(0, 6);
@@ -10,7 +10,7 @@ export default function InsightsFeed() {
       <div className={styles.grid}>
         {items.map((it) => (
           <article key={it.id} className={styles.card}>
-            <Image src={it.image} alt={it.title} width={360} height={200} />
+            <SmartImage src={it.image} alt={it.title} width={360} height={200} />
             <h4>{it.title}</h4>
             <p className={styles.excerpt}>{it.excerpt}</p>
           </article>
