@@ -9,10 +9,14 @@ import styles from "./Navbar.module.css";
 import { SOCIAL_LINKS, LOGO_PATH, LOGO_ALT } from "@/lib/constants";
 
 const MENU = [
-  { href: "/", label: "Home" },
-  { href: "/our-purpose", label: "Our purpose" },
-  { href: "/strategy-consulting", label: "Strategy Consulting" },
-  { href: "/insights", label: "Insights" },
+  { href: "/", key: "home", label: "Home" },
+  { href: "/our-purpose", key: "ourPurpose", label: "Our purpose" },
+  {
+    href: "/strategy-consulting",
+    key: "strategyConsulting",
+    label: "Strategy Consulting",
+  },
+  { href: "/insights", key: "insights", label: "Insights" },
   // Careers removed from menu per request
 ];
 
@@ -80,6 +84,10 @@ export default function Navbar() {
           >
             <FaInstagram />
           </a>
+          {/* Contact button in top-right (desktop) - moved after icons so it sits to the right */}
+          <Link href="/contact" className={styles.contactButton}>
+            Contact us
+          </Link>
         </div>
 
         <button
@@ -130,6 +138,16 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            {/* mobile contact link */}
+            <li>
+              <Link
+                href="/contact"
+                className={styles.mobileLink}
+                onClick={() => setOpen(false)}
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
 
           {/* Mobile social icons */}

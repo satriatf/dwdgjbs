@@ -124,6 +124,26 @@
   gap: 16px;
 }
 
+/* Contact button shown on desktop in the top-right; matches button styles */
+.contactButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.contactButton:hover {
+  background: #1a7a3d;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(31, 143, 74, 0.18);
+}
+
 .socialIcon {
   display: flex;
   align-items: center;
@@ -276,6 +296,11 @@
   .mobileSocial {
     display: none;
   }
+}
+
+/* mobile link styles are reused for contact; if needed override here */
+.mobileLink.contact {
+  font-weight: 600;
 }
 
 /* Desktop nav visible at MD+ */

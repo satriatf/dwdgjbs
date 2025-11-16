@@ -13,11 +13,17 @@ export default function Team() {
         Meet the passionate professionals driving sustainable transformation and
         delivering strategic excellence across industries.
       </p>
-      <div className={styles.grid}>
+      <div className={`${styles.grid} ${styles["count-" + TEAM.length] || ""}`}>
         {TEAM.map((t, idx) => (
           <div key={idx} className={styles.card}>
             <div className={styles.photo}>
-              <SmartImage src={t.photo} alt={t.name} width={200} height={200} className={styles.image} />
+              <SmartImage
+                src={t.photo}
+                alt={t.name}
+                width={200}
+                height={200}
+                className={styles.image}
+              />
             </div>
             <div className={styles.copy}>
               <h4 className={styles.name}>{t.name}</h4>

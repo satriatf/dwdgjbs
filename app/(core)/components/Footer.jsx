@@ -1,8 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import SmartImage from "@/app/(core)/components/ui/SmartImage";
 import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { SOCIAL_LINKS, LOGO_PATH, LOGO_ALT } from "@/lib/constants";
 import styles from "./Footer.module.css";
+// language selector removed — keep footer static
 
 export default function Footer() {
   return (
@@ -15,9 +18,15 @@ export default function Footer() {
               aria-label="DWDG JBS home"
               className={styles.logoLink}
             >
-              {/* prefer using the project logo image if available for stronger branding */}
               <div className={styles.logoImageWrap}>
-                <SmartImage src={LOGO_PATH} alt={LOGO_ALT} width={400} height={120} className={styles.logoImg} priority />
+                <SmartImage
+                  src={LOGO_PATH}
+                  alt={LOGO_ALT}
+                  width={400}
+                  height={120}
+                  className={styles.logoImg}
+                  priority
+                />
               </div>
             </Link>
             <p className={styles.mission}>
@@ -25,6 +34,7 @@ export default function Footer() {
               great together now.
             </p>
           </div>
+          {/* language selector removed per request */}
 
           <div className={styles.social}>
             <h4 className={styles.socialTitle}>Follow Us</h4>
