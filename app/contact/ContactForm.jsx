@@ -18,6 +18,7 @@ export default function ContactForm() {
   const [fileName, setFileName] = useState("");
   const [fileData, setFileData] = useState(null);
   const [lastFileUrl, setLastFileUrl] = useState("");
+  const isVercel = process.env.NEXT_PUBLIC_VERCEL === "1";
   const [loading, setLoading] = useState(false);
   const [notice, setNotice] = useState(null);
   const [successName, setSuccessName] = useState("");
@@ -219,18 +220,20 @@ export default function ContactForm() {
         />
       </label>
 
-      <label className={styles.field}>
-        <span className={styles.label}>
-          Attachment{" "}
-          <small>Optional. Max 2MB. Allowed: .pdf, .doc, .docx, .txt</small>
-        </span>
-        <input
-          type="file"
-          onChange={handleFile}
-          accept=".pdf,.doc,.docx,.txt"
-        />
-        {fileName && <div className={styles.fileName}>{fileName}</div>}
-      </label>
+      {!isVercel && (
+        <label className={styles.field}>
+          <span className={styles.label}>
+            Attachment{" "}
+            <small>Optional. Max 2MB. Allowed: .pdf, .doc, .docx, .txt</small>
+          </span>
+          <input
+            type="file"
+            onChange={handleFile}
+            accept=".pdf,.doc,.docx,.txt"
+          />
+          {fileName && <div className={styles.fileName}>{fileName}</div>}
+        </label>
+      )}
 
       <div className={styles.actions}>
         <Button type="submit" variant="primary" disabled={loading}>
