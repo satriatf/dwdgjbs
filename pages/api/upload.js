@@ -20,6 +20,16 @@ export const config = {
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
 
+  // If running on Vercel (or any read-only / ephemeral environment), do not attempt
+  // to write to the project filesystem. Return a helpful error so callers know to
+  // configure external storage (S3/Spaces/Cloudinary) for production.
+  if (process.env.VERCEL === "1" || process.env.NEXT_PUBLIC_VERCEL === "1") {
+    return res.status(503).json({
+      error:
+        "File upload not supported on this hosting environment. Configure external storage and update /api/upload to use it.",
+    });
+  }
+
   const uploadDir = path.join(process.cwd(), "public", "uploads");
   fs.mkdirSync(uploadDir, {
     recursive: true,
