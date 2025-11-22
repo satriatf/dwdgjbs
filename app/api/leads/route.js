@@ -1,9 +1,4 @@
-import fs from "fs/promises";
-import path from "path";
-
-// Temporary file-based storage for leads while DB is not ready.
-// This will append incoming leads to `data/leads.json` and return a 201.
-// Once DB is ready we can revert this endpoint to write into Postgres.
+import { query } from "@/lib/db";
 
 export async function POST(req) {
   try {
@@ -15,56 +10,27 @@ export async function POST(req) {
       });
     }
 
-    const dataDir = path.join(process.cwd(), "data");
-    const leadsFile = path.join(dataDir, "leads.json");
-
-    // Ensure folder exists
-    try {
-      await fs.mkdir(dataDir, { recursive: true });
-    } catch (e) {
-      // ignore
-    }
-
-    // Read existing leads (if any)
-    let list = [];
-    try {
-      const txt = await fs.readFile(leadsFile, "utf8");
-      list = JSON.parse(txt || "[]");
-      if (!Array.isArray(list)) list = [];
-    } catch (err) {
-      // file might not exist or be invalid — start fresh
-      list = [];
-    }
-
-    const created_at = new Date().toISOString();
-    // create a simple id (timestamp-based)
-    const id = Date.now();
-
-    // Accept separate fields if provided (subject, phone, file)
     const subject = body.subject || null;
     const phone = body.phone || null;
     const file = body.file || null;
-    const messageText = body.message || null;
 
-    const entry = {
-      id,
-      name,
-      email,
-      subject,
-      phone,
-      file: body.file || null,
-      message: messageText,
-      created_at,
-    };
+    // Use PostgreSQL parameter placeholders ($1, $2, ...)
+    const sql = `INSERT INTO leads (name, email, subject, phone, file, message, created_at)
+      VALUES ($1, $2, $3, $4, $5, $6, NOW()) RETURNING id, created_at`;
 
-    list.push(entry);
+    const res = await query(sql, [name, email, subject, phone, file, message]);
 
-    // write back
-    await fs.writeFile(leadsFile, JSON.stringify(list, null, 2), "utf8");
+    // `lib/db.query` returns result from `pg` which has rows
+    const inserted = res && res.rows && res.rows[0] ? res.rows[0] : null;
 
-    return new Response(JSON.stringify({ ok: true, id, created_at }), {
-      status: 201,
-    });
+    return new Response(
+      JSON.stringify({
+        ok: true,
+        id: inserted?.id || null,
+        created_at: inserted?.created_at || new Date().toISOString(),
+      }),
+      { status: 201 }
+    );
   } catch (err) {
     const message =
       process.env.NODE_ENV === "development"
@@ -75,4 +41,3 @@ export async function POST(req) {
     });
   }
 }
-// (DB-backed implementation removed) The route currently uses file-based storage.
