@@ -18,10 +18,12 @@ export default function ContactForm() {
   const [fileName, setFileName] = useState("");
   const [fileData, setFileData] = useState(null);
   const [lastFileUrl, setLastFileUrl] = useState("");
-  const isVercel = process.env.NEXT_PUBLIC_VERCEL === "1";
   const [loading, setLoading] = useState(false);
   const [notice, setNotice] = useState(null);
   const [successName, setSuccessName] = useState("");
+
+  // Check if running on Vercel production
+  const isVercel = process.env.NEXT_PUBLIC_VERCEL === "1";
 
   function handleChange(e) {
     const { name, value } = e.target;

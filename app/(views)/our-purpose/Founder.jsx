@@ -37,7 +37,7 @@ export default function Founder() {
         </blockquote>
         <div className={styles.attribution}>
           <strong>Panji Gumilang</strong>
-          <span>President of Do Well Do Good Jakarta Business School</span>
+          <span>President of ShARE JBS</span>
         </div>
       </div>
     </div>
